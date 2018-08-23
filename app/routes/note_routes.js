@@ -1,27 +1,18 @@
 var ObjectID = require('mongodb').ObjectID;
+var utils = require('../functions/utils')
+
 module.exports = function(app, db) {
-  //READ NOTE  
-
-app.post('/notes', (req, res) => {
-    const note = { text: req.body.body, title: req.body.title };
-    db.collection('notes').insert(note, (err, result) => {
-      if (err) { 
-        res.send({ 'error': 'An error has occurred' }); 
-      } else {
-        res.send(result.ops[0]);
+//WEBHOOK
+app.post('/webhook', (req,res) => {
+  var reqJson = req.body;
+    for (var i = 0; i < reqJson.messages.length; i++) {
+      var message = reqJson.messages[i];
+      if(message.body=="Clave"){
+        //Aca va la persistencia a la DB
+        console.log("Phone: " + utils.splitPhone(message.author));
+        console.log("Timestamp: " + message.time);
       }
-    });
-  });
-
-
-//WEBHOOK TEST
-  app.post('/webhook?token=eu8htn7gz3no08ed', (req,res)=>{  //token asi?
-
-    const chatid = JSON.parse('req.body.messages.cellphone') //seria esta la idea 
-
-    
-  
-
-
+  }
+res.send("200 OK")
 });
 };
