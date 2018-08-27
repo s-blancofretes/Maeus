@@ -11,6 +11,7 @@ app.post('/webhook', (req,res) => {
       var message = reqJson.messages[i];
       if(message.body=="Clave"){
         //Aca va la persistencia a la DB
+        
         var phone = utils.splitPhone(message.author);
         console.log("Phone: " + utils.splitPhone(message.author));
         console.log("Timestamp: " + message.time);
