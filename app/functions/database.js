@@ -3,9 +3,9 @@ module.exports = {
         const user = { cellphone: phone, idContact: idUser, story: idStory};
         db.collection('usuarios').insert(user, (err, result) => {
           if (err) { 
-            //res.send({ 'error': 'An error has occurred' }); 
+            return ({ 'error': 'An error has occurred' }); 
           } else {
-            //res.send(result.ops[0]);
+            return (result.ops[0]);
           }
         });
     }
