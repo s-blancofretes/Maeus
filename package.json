@@ -1,0 +1,21 @@
+{
+  "name": "maeus",
+  "version": "1.0.0",
+  "description": "Automated whatsapp messaging for En Un Segundo",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon server.js"
+  },
+  "author": "Santiago Blanco",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "mongodb": "^2.2.19",
+    "node-cron": "^1.2.1",
+    "request": "^2.88.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.5"
+  }
+}
