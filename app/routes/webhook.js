@@ -9,10 +9,10 @@ var whatsapp = require('../functions/whatsapp')
 //archivo para los insert de la base de datos
 var database = require('../functions/database') 
 
-//necesarion para que funcione el Scheduler en el otro archivo 
-var cron = require('node-cron');
+//necesarion para que funcione el chequeo de msj y envio 
+//var cron = require('node-cron');
 //archivo con Scheduler
-var schedulerCrono = require('../functions/cronometro')
+var startExperience = require('../functions/cronometro')
 
 
 
@@ -29,14 +29,16 @@ app.post('/webhook', (req,res) => {
         var cellphone = utils.splitPhone(message.author);
         //Aca va la persistencia a la DB 
         //guardamos en esta variable el resultado si dio error o no 
-        var respuesta = database.dbCreateNewUser(db, cellphone, message.author, 1); 
+        var respuesta = database.dbCreateNewUser(db, cellphone, message.author, 1, 1); 
         
         //Seteo del Cron 
-        schedulerCrono.startScheduler(cron);
+        //schedulerCrono.startScheduler(cron);
         
         
         console.log("Phone: " + utils.splitPhone(message.author));
         console.log("Timestamp: " + message.time);
+        //mandamos las variables db y whatsapp para poder acceder a sus funciones desde el otro script
+        startExperience.checkMsj(db,whatsapp, 1, 1);
         
         res.send(respuesta)
       }
