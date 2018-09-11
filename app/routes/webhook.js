@@ -14,7 +14,8 @@ var database = require('../functions/database')
 //archivo con Scheduler
 var startExperience = require('../functions/cronometro')
 
-
+//archivo verificador
+var verificador = require('../functions/checkingMsj')
 
 module.exports = function(app, db) {
 //WEBHOOK
@@ -38,7 +39,9 @@ app.post('/webhook', (req,res) => {
         console.log("Phone: " + utils.splitPhone(message.author));
         console.log("Timestamp: " + message.time);
         //mandamos las variables db y whatsapp para poder acceder a sus funciones desde el otro script
-        startExperience.checkMsj(db,whatsapp, 1, 1);
+        //funcion cronometro que va a verificar cada un intervalo 
+        //de tiempo quien esta en la historia 1 y mensaje 1
+        startExperience.cronometro(db,whatsapp,verificador, 1, 1);
         
         res.send(respuesta)
       }
