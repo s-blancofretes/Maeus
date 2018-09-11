@@ -21,7 +21,8 @@ module.exports = {
          
             }
         })
-        //esto no esta funcionando, salta error
+        //update en el usuario que cumplen con las condiciones 
+        //se suma 1 al numero de msj
         db.collection('usuarios').updateMany(
             query, 
             {$set: updateQuery},
