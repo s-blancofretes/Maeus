@@ -1,12 +1,11 @@
-const express        = require('express');
-const MongoClient    = require('mongodb').MongoClient;
-const bodyParser     = require('body-parser');
-var db             = require('./config/db');
-
+const express = require('express');
+const MongoClient = require('mongodb').MongoClient;
+const bodyParser = require('body-parser');
+var db = require('./config/db');
 
 const app = express();
 
-const port = 8000; 
+const port = 8000;
 
 app.use(bodyParser.json())
 
@@ -16,6 +15,6 @@ MongoClient.connect(db.url, (err, database) => {
     require('./app/routes')(app, db);
 
     app.listen(process.env.PORT || port, () => {
-    console.log('We are live on ' + port);
+        console.log('We are live on ' + port);
     });
 })
