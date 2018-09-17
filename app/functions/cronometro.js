@@ -10,10 +10,10 @@
 };*/
 //Funcion que chequea cada un periodo de tiempo determindado en que msj e historia esta c/uno
 module.exports = {
-    cronometro: function(db, wapp, check, datetime, idStory) {
+    cronometro: function(db, wapp, check, idStory) {
         //funcion que chequea que usuarios estan en la historia 1 en este caso, msj 1 y a esos se les manda
         //el mensaje hello, setear tiempo xa el msj 
-        check.checkMsj(db, wapp, datetime, idStory, 1, 'hello', 60);
+        check.checkMsj(db, wapp,idStory, 1, 'hello', 60);
     }
 }
 

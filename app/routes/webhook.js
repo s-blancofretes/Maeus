@@ -2,10 +2,6 @@ const bodyParser = require('body-parser');
 var utils = require('../functions/utils')
 var whatsapp = require('../functions/whatsapp')
 
-
-
-
-
 //archivo para los insert de la base de datos
 var database = require('../functions/database')
 
@@ -17,8 +13,6 @@ var startExperience = require('../functions/cronometro')
 //archivo verificador
 var verificador = require('../functions/checkingMsj')
 
-//para conseguir el timestamp en utc0
-var datetime = require('node-datetime');
 
 
 module.exports = function(app, db) {
@@ -45,7 +39,7 @@ module.exports = function(app, db) {
                 //mandamos las variables db y whatsapp para poder acceder a sus funciones desde el otro script
                 //funcion cronometro que va a verificar cada un intervalo 
                 //de tiempo quien esta en la historia 1 y mensaje 1
-                startExperience.cronometro(db, whatsapp, verificador, datetime, 1);
+                startExperience.cronometro(db, whatsapp, verificador, 1);
 
                 res.send(respuesta)
             }

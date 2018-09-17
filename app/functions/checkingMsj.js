@@ -1,14 +1,18 @@
 module.exports = {
-    checkMsj: function(db, wapp, datetime, idStory, numMsj, msg, timeMsj) {
+    checkMsj: function(db, wapp, idStory, numMsj, msg, timeMsj) {
 
 
         //tiempo actual
         var date = new Date();
-        var dateTime = datetime.create(date);
-        var now = dateTime.now(); //timestamp del tiempo actual
-        console.log(now);
+        console.log("hora normal:" + date);
+        
+        //te devuelve en milisegundos con respecto al utc0
+        //+ sacamos los 3 ultimos digitos que no son necesarios, timestamp es en segundos
+        var now = Math.floor(date.getTime()/1000)
+        console.log("hora actual: "+now);
 
         var intervalo = now - timeMsj;
+        console.log("intervalo: " + intervalo);
         //query que contiene los datos que queremos averiguar
         var query = { story: idStory, msjNumb: numMsj }; //msjTime: };//now-msjTime<=timeMsj
         var newNumMsj = numMsj + 1
