@@ -15,7 +15,15 @@ var verificador = require('../functions/checkingMsj')
 
 
 
-module.exports = function(app, db) {
+module.exports = function (app, db) {
+
+    app.get('/health', (req, res) => {
+        res.json({
+            ok: true,
+        });
+
+    });
+
     //WEBHOOK
     app.post('/webhook', (req, res) => {
         var reqJson = req.body;
