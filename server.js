@@ -5,9 +5,9 @@ var db = require('./config/db');
 
 const app = express();
 
-const port = 8000;
+const port = process.env.PORT || 8000;
 
-app.use(bodyParser.json())
+app.use(bodyParser.json({ limit: '50mb' }));
 
 MongoClient.connect(db.url, (err, database) => {
     if (err) return console.log(err)
