@@ -4,7 +4,8 @@
   "description": "Automated whatsapp messaging for En Un Segundo",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon server.js"
+    "dev": "nodemon server.js",
+    "start": "node server.js"
   },
   "author": "Santiago Blanco",
   "license": "ISC",
@@ -13,6 +14,7 @@
     "express": "^4.16.3",
     "mongodb": "^2.2.19",
     "node-cron": "^1.2.1",
+    "node-datetime": "^2.1.0",
     "request": "^2.88.0"
   },
   "devDependencies": {
