@@ -21,6 +21,10 @@ exports.obtenerExperienciaSegunHoraDeInicio = function(now) {
     }
 }
 
+exports.getStoryFromStartTime = function(now) {
+    return experiencias["1"];
+}
+
 function fechaApartirDeHora(hora) {
     const splitted = hora.split(":");
     const now = new Date();

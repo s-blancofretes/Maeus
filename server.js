@@ -1,5 +1,5 @@
 const express = require('express');
-const MongoClient = require('mongodb-promise').MongoClient;
+const MongoClient = require('mongodb').MongoClient;
 const bodyParser = require('body-parser');
 var db = require('./config/db');
 
@@ -9,7 +9,7 @@ const port = 8000;
 
 app.use(bodyParser.json())
 
-MongoClient.connect(db.url).then((err, database) => {
+MongoClient.connect(db.url, (err, database) => {
     if (err) return console.log(err)
     db = database.db("progeus18")
     require('./app/routes')(app, db);

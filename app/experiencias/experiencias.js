@@ -1,37 +1,39 @@
 module.exports = {
     "1": {
-        nombre: "Anton",
-        numeroSecuencias: 2,
-        horaDesde: "14:00",
-        horaHasta: "18:00",
-        duracionTotal: 25,
-        mensajes: [{
-                texto: "Hola soy anton",
-                archivo: "imagenes/anton-1.png",
-                tiempoEnvio: 10
+        id: 1,
+        name: "Anton",
+        totalMsg: 2,
+        startTime: "14:00",
+        endTime: "18:00",
+        duration: 25,
+        messages: [{
+                text: "Hola soy anton",
+                file: "imagenes/anton-1.png",
+                msgTime: 10
             },
             {
-                texto: "Hola nuevamente",
-                archivo: "videos/anton-2.mp4",
-                tiempoEnvio: 15
+                text: "Hola nuevamente",
+                file: "videos/anton-2.mp4",
+                msgTime: 15
             }
         ]
     },
     "2": {
-        nombre: "Silvina",
-        numeroSecuencias: 2,
-        horaDesde: "18:00",
-        horaHasta: "23:00",
-        duracionTotal: 30,
-        mensajes: [{
-                texto: "Hola soy anton",
-                archivo: "imagenes/anton-1.png",
-                tiempoEnvio: 15
+        id: 2,
+        name: "Silvina",
+        totalMsg: 2,
+        startTime: "18:00",
+        endTime: "23:00",
+        duration: 30,
+        messages: [{
+                text: "Hola soy anton",
+                file: "imagenes/anton-1.png",
+                msgTime: 15
             },
             {
-                texto: "Hola nuevamente",
-                archivo: "videos/anton-2.mp4",
-                tiempoEnvio: 15
+                text: "Hola nuevamente",
+                file: "videos/anton-2.mp4",
+                msgTime: 15
             }
         ]
     }

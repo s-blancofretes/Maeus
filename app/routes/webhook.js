@@ -6,15 +6,6 @@ const experiencias = require('../experiencias');
 //archivo para los insert de la base de datos
 var database = require('../functions/database')
 
-//necesarion para que funcione el chequeo de msj y envio 
-//var cron = require('node-cron');
-//archivo con Scheduler
-var startExperience = require('../functions/cronometro')
-
-//archivo verificador
-var verificador = require('../functions/checkingMsj')
-
-
 
 module.exports = function(app, db) {
     //WEBHOOK
@@ -22,22 +13,22 @@ module.exports = function(app, db) {
         var reqJson = req.body;
         for (var i = 0; i < reqJson.messages.length; i++) {
             var message = reqJson.messages[i];
+            var chatId = message.author;
 
             if (message.body == "Clave") {
 
-                whatsapp.sendFile(message.author, 'Currywurst', 'https://ais.kochbar.de/kbrezept/515109_897054/620x465/currywurst-gulasch-mit-backkartoffeln-rezept-bild-nr-4945.jpg')
+                // var currentStory = experiencias.obtenerExperienciaSegunHoraDeInicio();
+                var currentStory = experiencias.getStoryFromStartTime();
 
-                var cellphone = utils.splitPhone(message.author);
-                var author = utils.splitPhone(message.author);
-                var time = message.time;
-                var experienciaActual = experiencias.obtenerExperienciaSegunHoraDeInicio();
+                if (currentStory !== null) {
+                    if (!await database.verifyUserIsActive(db, chatId)) {
+                        whatsapp.sendMessage(chatId, "Historias contadas por Whatsapp 📱 Próximamente acompañá a Olivia, Antón, Damián y Silvina");
+                        await database.createNewUser(db, { chatId: chatId, storyId: currentStory.id });
+                    } else {
+                        whatsapp.sendMessage(chatId, "Uste ya eta registrado :(");
+                    }
 
-                if (experienciaActual !== null) {
-                    await database.dbCreateNewExperience(db, { numeroMovile: cellphone, idExperiencia: experienciaActual.id });
                 }
-
-                console.log("Phone: " + utils.splitPhone(message.author));
-                console.log("Timestamp: " + message.time);
 
                 res.json({
                     ok: true
