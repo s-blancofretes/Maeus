@@ -13,7 +13,12 @@ module.exports = {
     cronometro: function(db, wapp, check, idStory) {
         //funcion que chequea que usuarios estan en la historia 1 en este caso, msj 1 y a esos se les manda
         //el mensaje hello, setear tiempo xa el msj 
-        check.checkMsj(db, wapp,idStory, 1, 'hello', 60);
+        setInterval(check.checkMsj(db, wapp,idStory, 1, 'hello1', 60), 10000);
+        setInterval(check.checkMsj(db, wapp,idStory, 2, 'hello2', 60), 100000);
+        setInterval(check.checkMsj(db, wapp,idStory, 3, 'hello3', 60), 10000);
+        
+
+
     }
 }
 

@@ -1,13 +1,13 @@
 module.exports = {
-    dbCreateNewUser: function(db, phone, idUser, idStory, numMensaje, msjTime) {
-        const user = { cellphone: phone, idContact: idUser, story: idStory, msjNumb: numMensaje, msjTime: msjTime };
-        db.collection('usuarios').insert(user, (err, result) => {
-            if (err) {
-                return ({ 'error': 'An error has occurred' });
-            } else {
-                return (result.ops[0]);
-            }
-        });
-    }
+    dbCreateNewExperience: async function({ numeroMovil, idExperiencia }) {
+        const experiencia = {
+            numeroMovil,
+            horaComienzo: new Date(),
+            secuenciaActual: 0,
+            termino: false,
+            idExperiencia
+        };
 
-};
+        return await db.collection('experiencias').insert(experiencia);
+    }
+}
