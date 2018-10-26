@@ -22,5 +22,17 @@ module.exports = {
         if (result.length > 0) {
             return true
         } else return false;
+    },
+    findUsersByStoryIdAndCurrentMessage: async function(db, storyId, currentMsg) {
+        var query = { storyId: storyId, currentMsg: currentMsg };
+        var result = await db.collection('users').find(query).toArray();
+        return result;
+    },
+
+    updateUsersCurrentMessage: async function(db, chatId, currentMsg) {
+        var query = { chatId: chatId };
+        var updateQuery = { currentMsg: currentMsg + 1 };
+        await db.collection('users').findAndModify({ query }, { $set: updateQuery })
     }
+
 }

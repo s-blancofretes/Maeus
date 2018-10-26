@@ -1,10 +1,8 @@
 const bodyParser = require('body-parser');
-var utils = require('../functions/utils')
-var whatsapp = require('../functions/whatsapp')
-const experiencias = require('../experiencias');
-
-//archivo para los insert de la base de datos
-var database = require('../functions/database')
+var utils = require('../functions/utils');
+var whatsapp = require('../functions/whatsapp');
+const experiences = require('../experiences');
+var database = require('../functions/database');
 
 
 module.exports = function(app, db) {
@@ -18,7 +16,7 @@ module.exports = function(app, db) {
             if (message.body == "Clave") {
 
                 // var currentStory = experiencias.obtenerExperienciaSegunHoraDeInicio();
-                var currentStory = experiencias.getStoryFromStartTime();
+                var currentStory = experiences.getStoryFromStartTime();
 
                 if (currentStory !== null) {
                     if (!await database.verifyUserIsActive(db, chatId)) {

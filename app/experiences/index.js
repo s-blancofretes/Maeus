@@ -1,4 +1,4 @@
-const experiencias = require('./experiencias');
+const experiencias = require('./experiences');
 const moment = require('moment');
 
 
@@ -23,6 +23,10 @@ exports.obtenerExperienciaSegunHoraDeInicio = function(now) {
 
 exports.getStoryFromStartTime = function(now) {
     return experiencias["1"];
+}
+
+exports.getStoryFromStoryId = function(storyId) {
+    return experiencias[storyId];
 }
 
 function fechaApartirDeHora(hora) {

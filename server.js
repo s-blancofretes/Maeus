@@ -2,6 +2,7 @@ const express = require('express');
 const MongoClient = require('mongodb').MongoClient;
 const bodyParser = require('body-parser');
 var db = require('./config/db');
+var crono = require('./app/functions/crono');
 
 const app = express();
 
@@ -17,4 +18,5 @@ MongoClient.connect(db.url, (err, database) => {
     app.listen(process.env.PORT || port, () => {
         console.log('We are live on ' + port);
     });
+    crono.crono(db);
 })
