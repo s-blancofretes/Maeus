@@ -31,8 +31,11 @@ module.exports = {
 
     updateUsersCurrentMessage: async function(db, chatId, currentMsg) {
         var query = { chatId: chatId };
-        var updateQuery = { currentMsg: currentMsg + 1 };
-        await db.collection('users').findAndModify({ query }, { $set: updateQuery })
+        var updateMsg = currentMsg + 1;
+        var updateQuery = { currentMsg: updateMsg};
+
+        //await db.collection('users').findAndModify({ query }, { $set: updateQuery })
+        await db.collection('users').update( query, {$set : updateQuery})
     }
 
 }
