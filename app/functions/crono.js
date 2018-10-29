@@ -4,9 +4,7 @@ module.exports = {
         setInterval(function() {
             check.checkMessage(db, 1, 0);
             check.checkMessage(db, 1, 1);
-
         }, 10000);
-
     }
 }
 

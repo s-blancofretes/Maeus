@@ -1,8 +1,9 @@
+var utils = require('../functions/utils');
 module.exports = {
     createNewUser: async function(db, { chatId, storyId }) {
         const user = {
             chatId,
-            startTime: new Date(),
+            startTime: utils.generateTimestamp(),
             currentMsg: 0,
             lastMsgTime: null,
             active: true,
