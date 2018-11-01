@@ -24,8 +24,22 @@ module.exports = {
             return true
         } else return false;
     },
+    verifyUserIsInactive: async function(db, chatId) {
+        var query = { chatId: chatId, active: false };
+        var result = await db.collection('users').find(query).limit(1).toArray();
+        if (result.length > 0) {
+            return true
+        } else return false;
+    },
+    verifyUserIsInDb: async function(db, chatId) {
+        var query = { chatId: chatId };
+        var result = await db.collection('users').find(query).limit(1).toArray();
+        if (result.length > 0) {
+            return true
+        } else return false;
+    },
     findUsersByStoryIdAndCurrentMessage: async function(db, storyId, currentMsg) {
-        var query = { storyId: storyId, currentMsg: currentMsg };
+        var query = { storyId: storyId, currentMsg: currentMsg, active: true };
         var result = await db.collection('users').find(query).toArray();
         return result;
     },
@@ -33,10 +47,20 @@ module.exports = {
     updateUsersCurrentMessage: async function(db, chatId, currentMsg) {
         var query = { chatId: chatId };
         var updateMsg = currentMsg + 1;
-        var updateQuery = { currentMsg: updateMsg};
+        var updateQuery = { currentMsg: updateMsg };
 
         //await db.collection('users').findAndModify({ query }, { $set: updateQuery })
-        await db.collection('users').update( query, {$set : updateQuery})
+        await db.collection('users').update(query, { $set: updateQuery });
+    },
+    deactivateUserByChatId: async function(db, chatId) {
+        var query = { chatId: chatId };
+        var updateQuery = { active: false, currentMsg: 0 };
+        await db.collection('users').update(query, { $set: updateQuery });
+    },
+    activateUserByChatId: async function(db, chatId) {
+        var now = utils.generateTimestamp();
+        var query = { chatId: chatId };
+        var updateQuery = { active: true, startTime: now };
+        await db.collection('users').update(query, { $set: updateQuery });
     }
-
 }

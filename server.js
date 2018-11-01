@@ -18,5 +18,8 @@ MongoClient.connect(db.url, (err, database) => {
     app.listen(process.env.PORT || port, () => {
         console.log('We are live on ' + port);
     });
+    var d = new Date();
+    console.log(d.getHours());
+    console.log(d.getMinutes());
     crono.crono(db);
 })

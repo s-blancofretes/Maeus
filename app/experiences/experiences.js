@@ -14,7 +14,7 @@ module.exports = {
             {
                 text: "Hola nuevamente",
                 file: "videos/anton-2.mp4",
-                msgTime: 20
+                msgTime: 30
             }
         ]
     },

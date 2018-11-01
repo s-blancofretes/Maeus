@@ -19,11 +19,14 @@ module.exports = function(app, db) {
                 var currentStory = experiences.getStoryFromStartTime();
 
                 if (currentStory !== null) {
-                    if (!await database.verifyUserIsActive(db, chatId)) {
+                    if (!await database.verifyUserIsInDb(db, chatId)) {
                         whatsapp.sendMessage(chatId, "Historias contadas por Whatsapp 📱 Próximamente acompañá a Olivia, Antón, Damián y Silvina");
                         await database.createNewUser(db, { chatId: chatId, storyId: currentStory.id });
-                    } else {
-                        whatsapp.sendMessage(chatId, "Uste ya eta registrado :(");
+                    } else if (await database.verifyUserIsActive(db, chatId)) {
+                        whatsapp.sendMessage(chatId, "Ya estas siendo parte de la experiencia!");
+                    } else if (await database.verifyUserIsInactive(db, chatId)) {
+                        whatsapp.sendMessage(chatId, "Bienvenido nuevamente a la experiencia!");
+                        await database.activateUserByChatId(db, chatId);
                     }
 
                 }
