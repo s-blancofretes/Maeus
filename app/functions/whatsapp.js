@@ -60,12 +60,14 @@ module.exports = {
 
         request(options, function(err, res, body) {
             //console.log(res.statusCode);
-            console.log(res.body.totalMessages); //no se porque me da un undefine
             var totalMsg = res.body.totalMessages;
-            if (totalMsg > 5) {
-                console.log("ALERTA_5");
-            } else if (totalMsg > 1) {
-                console.log("ALERTA_1");
+            if (totalMsg > 10) {
+                email.sendEmailAlert("Alerta 10 Mensajes en cola");
+                console.log("Alerta 10");
+            } else if (totalMsg > 5) {
+                console.log("Alerta 5");
+                email.sendEmailAlert("Alerta 5 Mensajes en cola");
+
                 //email.enviar(); invocar enviador de emails con parametro totalmsg
             }
         });

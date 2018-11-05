@@ -8,11 +8,9 @@ module.exports = {
         }, 10000);
         setInterval(function() {
             wapp.blockcheck();
-        }, 10000);
+        }, 300000);
         setInterval(function() {
             wapp.sendMessagecheck();
-        }, 15000)
+        }, 60000)
     }
 }
-
-//

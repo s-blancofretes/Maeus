@@ -20,6 +20,25 @@ module.exports = {
     },
     "2": {
         id: 2,
+        name: "Olivia",
+        totalMsg: 2,
+        startTime: "18:00",
+        endTime: "23:00",
+        duration: 30,
+        messages: [{
+                text: "Hola soy anton",
+                file: "imagenes/anton-1.png",
+                msgTime: 15
+            },
+            {
+                text: "Hola nuevamente",
+                file: "videos/anton-2.mp4",
+                msgTime: 15
+            }
+        ]
+    },
+    "3": {
+        id: 3,
         name: "Silvina",
         totalMsg: 2,
         startTime: "18:00",
@@ -36,5 +55,25 @@ module.exports = {
                 msgTime: 15
             }
         ]
+    },
+    "4": {
+        id: 4,
+        name: "Damian",
+        totalMsg: 2,
+        startTime: "18:00",
+        endTime: "23:00",
+        duration: 30,
+        messages: [{
+                text: "Hola soy anton",
+                file: "imagenes/anton-1.png",
+                msgTime: 15
+            },
+            {
+                text: "Hola nuevamente",
+                file: "videos/anton-2.mp4",
+                msgTime: 15
+            }
+        ]
     }
+
 }

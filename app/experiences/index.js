@@ -22,7 +22,33 @@ exports.obtenerExperienciaSegunHoraDeInicio = function(now) {
 }
 
 exports.getStoryFromStartTime = function(now) {
-    return experiencias["1"];
+    //return experiencias["1"];
+    var date = new Date();
+    var now = "" + date.getUTCHours() + date.getUTCMinutes();
+    var nowInt = parseInt(now, 10);
+    if (300 <= nowInt && nowInt <= 859) {
+        return experiencias["1"];
+        console.log("estamos en exp 1");
+    } else if (900 <= nowInt && nowInt <= 1459) {
+        console.log("estamos en exp 2");
+        return experiencias["2"];
+    } else if (1500 <= nowInt && nowInt <= 2059) {
+        console.log("esta funcando la experiencia 3")
+        return experiencias["3"];
+    } else if (2100 <= nowInt && nowInt <= 2359) {
+        console.log("estamos en exp 4");
+        return experiencias["4"];
+    } else if (0 <= nowInt && nowInt <= 259) {
+        console.log("estamos en exp 4");
+        return experiencias["4"];
+    }
+
+
+
+
+
+
+
 }
 
 exports.getStoryFromStoryId = function(storyId) {
