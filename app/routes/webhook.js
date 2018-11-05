@@ -14,7 +14,6 @@ module.exports = function(app, db) {
             var chatId = message.author;
 
             if (message.body == "Clave") {
-
                 // var currentStory = experiencias.obtenerExperienciaSegunHoraDeInicio();
                 var currentStory = experiences.getStoryFromStartTime();
 
@@ -37,4 +36,5 @@ module.exports = function(app, db) {
             }
         }
     });
+
 };
