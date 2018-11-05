@@ -62,8 +62,6 @@ module.exports = {
             //console.log(res.statusCode);
             console.log(res.body.totalMessages); //no se porque me da un undefine
             var totalMsg = res.body.totalMessages;
-            let mailOptions2 = email.mailOptions;
-            let transporter2 = email.transporter;
             if (totalMsg > 5) {
                 console.log("ALERTA_5");
             } else if (totalMsg > 1) {
