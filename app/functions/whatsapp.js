@@ -29,7 +29,7 @@ module.exports = {
     },
 
     //Function to send audio, image and video files
-    sendFile: function(chatId, filename, link) {
+    sendFile: function(chatId, filename, link, caption) {
 
         const options = {
             url: url + '/sendFile',
@@ -38,7 +38,9 @@ module.exports = {
             json: {
                 "chatId": chatId,
                 "body": link,
-                "filename": filename
+                "filename": filename,
+                "caption": caption
+
             },
             headers: {
                 'content-type': 'application/json'

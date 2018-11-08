@@ -5,6 +5,7 @@ var utils = require('../functions/utils');
 
 module.exports = {
     checkMessage: async function(db, storyId, currentMsg) {
+        const baseUrl = "https://enunsegundo.ucu.edu.uy";
         var users = await database.findUsersByStoryIdAndCurrentMessage(db, storyId, currentMsg);
         for (let idx in users) {
             var user = users[idx];
@@ -17,7 +18,12 @@ module.exports = {
             var startTime = user.startTime;
 
             if (interval >= startTime) {
-                whatsapp.sendMessage(chatId, messageText);
+                if (!message.isFile) {
+                    whatsapp.sendMessage(chatId, messageText);
+                } else if (message.isFile) {
+                    whatsapp.sendFile(chatId, message.fileName, baseUrl + message.url, message.text)
+                }
+
                 await database.updateUsersCurrentMessage(db, chatId, currentMsg);
                 if (exp.totalMsg - 1 == currentMsg) {
                     await database.deactivateUserByChatId(db, chatId);
