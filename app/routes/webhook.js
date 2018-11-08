@@ -15,8 +15,7 @@ module.exports = function(app, db) {
 
             if (message.body == "Clave") {
                 // var currentStory = experiencias.obtenerExperienciaSegunHoraDeInicio();
-                //var currentStory = experiences.getStoryFromStartTime();
-                var currentStory = 2;
+                var currentStory = experiences.getStoryFromStartTime();
 
                 if (currentStory !== null) {
                     if (!await database.verifyUserIsInDb(db, chatId)) {

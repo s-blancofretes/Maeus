@@ -22,7 +22,7 @@ exports.obtenerExperienciaSegunHoraDeInicio = function(now) {
 }
 
 exports.getStoryFromStartTime = function(now) {
-    //return experiencias["1"];
+    return experiencias["2"];
     var date = new Date();
     var now = "" + date.getUTCHours() + date.getUTCMinutes();
     var nowInt = parseInt(now, 10);
