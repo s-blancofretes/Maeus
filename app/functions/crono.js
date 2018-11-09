@@ -1,10 +1,12 @@
 var check = require('../functions/checkMessages');
 var wapp = require('../functions/whatsapp');
+var utils = require('../functions/utils');
 module.exports = {
     crono: function(db) {
-        setInterval(function() {
+        utils.interval(function() {
             check.checkMessage(db, 2, 0);
             check.checkMessage(db, 2, 1);
+            check.checkMessage(db, 2, 2);
             check.checkMessage(db, 2, 3);
             check.checkMessage(db, 2, 4);
             check.checkMessage(db, 2, 5);
@@ -24,6 +26,6 @@ module.exports = {
         }, 300000);
         setInterval(function() {
             wapp.sendMessagecheck();
-        }, 60000)
+        }, 300000)
     }
 }
