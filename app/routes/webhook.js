@@ -8,6 +8,7 @@ var database = require('../functions/database');
 module.exports = function(app, db) {
     //WEBHOOK
     app.post('/webhook', async(req, res) => {
+        console.log("webhook recieve :" + JSON.stringify(req.body));
 
         res.json({
             ok: true
