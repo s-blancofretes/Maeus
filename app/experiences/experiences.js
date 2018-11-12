@@ -126,7 +126,7 @@ module.exports = {
             {
                 text: "Se me llega a arruinar el vestido y mato a alguien.",
                 fileName: "img_2304.jpg",
-                url: "/olivia/O_0015.jpg",
+                url: "/olivia/O_015.jpg",
                 msgTime: 5820,
                 isFile: true
             },
@@ -177,5 +177,7 @@ module.exports = {
             }
         ]
     }
-
-}
+ 
+ }
+ 
+ 
