@@ -32,7 +32,7 @@ module.exports = {
 
     //Function to send audio, image and video files
     sendFile: function(chatId, filename, link, caption) {
-
+        console.log("Sending file... " + link);
         const options = {
             url: url + '/sendFile',
             method: 'POST',
