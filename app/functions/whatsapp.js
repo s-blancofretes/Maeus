@@ -4,6 +4,7 @@ const querystring = require('querystring')
 var email = require('../functions/email');
 const url = 'https://eu10.chat-api.com/instance8578';
 var token = { token: 'eu8htn7gz3no08ed' };
+const TIMEOUT = 1000 * 60 * 2;
 
 module.exports = {
     //Function to send standard text messages
@@ -19,7 +20,8 @@ module.exports = {
             },
             headers: {
                 'content-type': 'application/json'
-            }
+            },
+            timeout: TIMEOUT
         };
 
         request(options, function(err, res, body) {
@@ -44,10 +46,14 @@ module.exports = {
             },
             headers: {
                 'content-type': 'application/json'
-            }
+            },
+            timeout: TIMEOUT
         };
 
         request(options, function(err, res, body) {
+            if (err) {
+                console.log("Error sending file to api :" + err.message);
+            }
             console.log(body);
             console.log(res.statusCode);
         });
@@ -58,6 +64,7 @@ module.exports = {
             method: 'GET',
             qs: token,
             json: true,
+            timeout: TIMEOUT
         };
 
         request(options, function(err, res, body) {
@@ -85,7 +92,8 @@ module.exports = {
             },
             headers: {
                 'content-type': 'application/json'
-            }
+            },
+            timeout: TIMEOUT
         };
 
         request(options, function(err, res, body) {

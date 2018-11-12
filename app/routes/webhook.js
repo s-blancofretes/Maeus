@@ -8,6 +8,11 @@ var database = require('../functions/database');
 module.exports = function(app, db) {
     //WEBHOOK
     app.post('/webhook', async(req, res) => {
+
+        res.json({
+            ok: true
+        });
+
         var reqJson = req.body;
         for (var i = 0; i < reqJson.messages.length; i++) {
             var message = reqJson.messages[i];
@@ -30,9 +35,7 @@ module.exports = function(app, db) {
 
                 }
 
-                res.json({
-                    ok: true
-                })
+
             }
         }
     });
