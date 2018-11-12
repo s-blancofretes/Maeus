@@ -1,6 +1,6 @@
 const experiencias = require('./experiences');
 const moment = require('moment');
-
+var database = require('../functions/database');
 
 exports.obtenerExperienciaSegunHoraDeInicio = function(now) {
     for (let idx in experiencias) {
@@ -20,6 +20,7 @@ exports.obtenerExperienciaSegunHoraDeInicio = function(now) {
         }
     }
 }
+
 
 exports.getStoryFromStartTime = function(now) {
     return experiencias["2"];
@@ -42,17 +43,24 @@ exports.getStoryFromStartTime = function(now) {
         console.log("estamos en exp 4");
         return experiencias["4"];
     }
-
-
-
-
-
-
-
 }
 
 exports.getStoryFromStoryId = function(storyId) {
     return experiencias[storyId];
+}
+
+exports.getDialogflowTokenFromChatId = async function(db, chatId) {
+    user = await database.findUserByChatId(db, chatId);
+    var storyId = user[0].storyId;
+    if (storyId == 1) {
+        return "tokenAnton"
+    } else if (storyId == 2) {
+        return "f2c76dd2bad6464db2e32febf8de6281"
+    } else if (storyId == 3) {
+        return "tokenSilvina"
+    } else if (storyId == 4) {
+        return "tokenDamian"
+    }
 }
 
 function fechaApartirDeHora(hora) {

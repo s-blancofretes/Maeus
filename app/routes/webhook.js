@@ -3,6 +3,7 @@ var utils = require('../functions/utils');
 var whatsapp = require('../functions/whatsapp');
 const experiences = require('../experiences');
 var database = require('../functions/database');
+var dialogflow = require('../functions/dialogflow');
 
 
 module.exports = function(app, db) {
@@ -35,8 +36,10 @@ module.exports = function(app, db) {
                     }
 
                 }
-
-
+            } else if (await database.verifyUserIsActive(db, chatId)) {
+                var token = await experiences.getDialogflowTokenFromChatId(db, chatId);
+                var response = dialogflow.sendMessage(chatId, message.body, token);
+                //whatsapp.sendMessage(chatId, response);
             }
         }
     });
