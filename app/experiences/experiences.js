@@ -208,7 +208,7 @@ module.exports = {
                 isFile: false
             },
             {
-                text: "Próximo encuentro: iglesia 🔜 + 👰 + 💒",
+                text: "Próximo encuentro: iglesia 🔜 👰 💒",
                 fileName: "img_2303.jpg",
                 url: "/olivia/O_007.jpg",
                 msgTime: 3600,
