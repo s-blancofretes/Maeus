@@ -39,7 +39,6 @@ module.exports = function(app, db) {
             } else if (await database.verifyUserIsActive(db, chatId)) {
                 var token = await experiences.getDialogflowTokenFromChatId(db, chatId);
                 var response = dialogflow.sendMessage(chatId, message.body, token);
-                //whatsapp.sendMessage(chatId, response);
             }
         }
     });

@@ -222,7 +222,7 @@ module.exports = {
                 isFile: false
             },
             {
-                text: "Un embole esperar sola 😁😁",
+                text: "Un embole esperar sola 😬😬",
                 fileName: null,
                 url: null,
                 msgTime: 3787,

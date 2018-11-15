@@ -19,6 +19,5 @@ MongoClient.connect(db.url, (err, database) => {
     app.listen(process.env.PORT || port, () => {
         console.log('We are live on ' + port);
     });
-    dialogflow.sendMessage("17472822486@c.us", "quien sos?", "f2c76dd2bad6464db2e32febf8de6281");
     crono.crono(db);
 })
