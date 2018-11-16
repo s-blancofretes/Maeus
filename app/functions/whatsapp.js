@@ -100,4 +100,14 @@ module.exports = {
             //console.log(res.statusCode);
         });
     },
+    rebootApi: function() {
+        const options = {
+            url: url + '/reboot',
+            method: 'GET',
+            qs: token,
+            json: true,
+            timeout: TIMEOUT
+        };
+        request(options, function(err, res, body) {});
+    },
 }

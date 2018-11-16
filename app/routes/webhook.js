@@ -18,15 +18,15 @@ module.exports = function(app, db) {
         var reqJson = req.body;
         for (var i = 0; i < reqJson.messages.length; i++) {
             var message = reqJson.messages[i];
-            var chatId = message.author;
+            var chatId = message.author; //porq tomamos el autor y no de una el chatid?
 
-            if (message.body == "Clave") {
+            if (message.body == "En un segundo") {
                 // var currentStory = experiencias.obtenerExperienciaSegunHoraDeInicio();
                 var currentStory = experiences.getStoryFromStartTime();
 
-                if (currentStory !== null) {
+                if (currentStory !== null) { //no entiendo esta condicion inicial
                     if (!await database.verifyUserIsInDb(db, chatId)) {
-                        whatsapp.sendMessage(chatId, "Historias contadas por Whatsapp 📱 Próximamente acompañá a Olivia, Antón, Damián y Silvina");
+                        whatsapp.sendMessage(chatId, "Gracias por participar de la experiencia. Agrega este celular 091940835 📱como contacto y comenza a vivir *En un segundo* 🕓");
                         await database.createNewUser(db, { chatId: chatId, storyId: currentStory.id });
                     } else if (await database.verifyUserIsActive(db, chatId)) {
                         whatsapp.sendMessage(chatId, "Ya estas siendo parte de la experiencia!");
@@ -34,7 +34,13 @@ module.exports = function(app, db) {
                         whatsapp.sendMessage(chatId, "Bienvenido nuevamente a la experiencia!");
                         await database.activateUserByChatId(db, chatId);
                     }
-
+                }
+            } else if (message.body == "Detener") {
+                if (await database.verifyUserIsActive(db, chatId)) {
+                    await database.deactivateUserByChatId(db, chatId);
+                    whatsapp.sendMessage(chatId, "Experiencia detenida 😭");
+                } else {
+                    whatsapp.sendMessage(chatId, "No estas en una experiencia, por lo tanto no hay nada que detener 🤷");
                 }
             } else if (await database.verifyUserIsActive(db, chatId)) {
                 var token = await experiences.getDialogflowTokenFromChatId(db, chatId);
@@ -43,4 +49,4 @@ module.exports = function(app, db) {
         }
     });
 
-};
+}
