@@ -2,21 +2,200 @@ module.exports = {
     "1": {
         id: 1,
         name: "Anton",
-        totalMsg: 2,
+        totalMsg: 25,
         startTime: "14:00",
         endTime: "18:00",
-        duration: 25,
+        duration: 27,
         messages: [{
-                text: "Hola soy anton",
-                file: "imagenes/anton-1.png",
-                msgTime: 10
+                text: "Aprontandome para la caminata",
+                fileName: "img_1501.jpg",
+                url: "/anton/A_001.jpg",
+                msgTime: 0,
+                isFile: true
             },
             {
-                text: "Hola nuevamente",
-                file: "videos/anton-2.mp4",
-                msgTime: 30
-            }
-        ]
+                text: "Tremendo día!",
+                fileName: null,
+                url: null,
+                msgTime: 5,
+                isFile: false
+            },
+            {
+                text: "Vos bien?",
+                fileName: null,
+                url: null,
+                msgTime: 10,
+                isFile: false
+            },
+            {
+                text: "Pa",
+                fileName: null,
+                url: null,
+                msgTime: 120,
+                isFile: false
+            },
+            {
+                text: "Tengo que despejar mi mente",
+                fileName: null,
+                url: null,
+                msgTime: 130,
+                isFile: false
+            },
+            {
+                text: "Sino no llego a la tarde para la firma del local",
+                fileName: null,
+                url: null,
+                msgTime: 140,
+                isFile: false
+            },
+            {
+                text: "Ya salí de casa",
+                fileName: null,
+                url: null,
+                msgTime: 600,
+                isFile: false
+            },
+            {
+                text: "Vengo acompañado",
+                fileName: "img_1502.jpg",
+                url: "/anton/A_004.jpg",
+                msgTime: 610,
+                isFile: true
+            },
+            {
+                text: "Te voy a mandar un video de Titán",
+                fileName: null,
+                url: null,
+                msgTime: 870,
+                isFile: false
+            },
+            {
+                text: null,
+                fileName: "vid_2001.mp4",
+                url: "/anton/A_005.mp4",
+                msgTime: 900,
+                isFile: true
+            },
+            {
+                text: null,
+                fileName: "aud_2200.wav",
+                url: "/anton/A_006.wav",
+                msgTime: 1500,
+                isFile: true
+            },
+            {
+                text: "Hasta cuando no estamos juntos me cuida jajaja",
+                fileName: "img_1503.jpg",
+                url: "/anton/A_007.jpg",
+                msgTime:1800,
+                isFile: true
+            },
+            {
+                text: "Para",
+                fileName: null,
+                url: null,
+                msgTime: 2400,
+                isFile: false
+            },
+            {
+                text: "Increíble",
+                fileName: null,
+                url: null,
+                msgTime: 2403,
+                isFile: false
+            },
+            {
+                text: "Me acaban de llamar del negocio ",
+                fileName: null,
+                url: null,
+                msgTime: 2413,
+                isFile: false
+            },
+            {
+                text: "Hubo un problema con los productos que me entraron la semana pasada",
+                fileName: null,
+                url: null,
+                msgTime: 2423,
+                isFile: false
+            },
+            {
+                text: "No se qué hacer...",
+                fileName: null,
+                url: null,
+                msgTime: 2430,
+                isFile: false
+            },
+            {
+                text: null,
+                fileName: "aud_2201.wav",
+                url: "/anton/A_011.wav",
+                msgTime: 2700,
+                isFile: true
+            },
+            {
+                text: null,
+                fileName: "aud_2202.wav",
+                url: "/anton/A_012.wav",
+                msgTime: 2760,
+                isFile: true
+            },
+            {
+                text: null,
+                fileName: "aud_2203.wav",
+                url: "/anton/A_013.wav",
+                msgTime: 3420,
+                isFile: true
+            },
+            {
+                text: "Yendo al local en taxi.",
+                fileName: null,
+                url: null,
+                msgTime: 3780,
+                isFile: false
+            },
+            {
+                text: "Liliana me obligó 😒",
+                fileName: null,
+                url: null,
+                msgTime: 3790,
+                isFile: false
+            },
+            {
+                text: "Anda a saber que me encuentro",
+                fileName: null,
+                url: null,
+                msgTime: 3798,
+                isFile: false
+            },
+            {
+                text: "Ya está",
+                fileName: null,
+                url: null,
+                msgTime: 4020,
+                isFile: false
+            },
+            {
+                text: "Solucionado 👍",
+                fileName: null,
+                url: null,
+                msgTime: 4025,
+                isFile: false
+            },
+            {
+                text: "Ya te mando un audio",
+                fileName: null,
+                url: null,
+                msgTime: 4030,
+                isFile: false
+            },
+            {
+                text: null,
+                fileName: "aud_2204.wav",
+                url: "/anton/A_017.wav",
+                msgTime: 4260,
+                isFile: true
+            },
+  ]
     },
     "2": {
         id: 2,
