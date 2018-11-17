@@ -708,20 +708,206 @@ module.exports = {
     "4": {
         id: 4,
         name: "Damian",
-        totalMsg: 2,
+        totalMsg: 28,
         startTime: "18:00",
         endTime: "23:00",
         duration: 30,
         messages: [{
-                text: "Hola soy anton",
-                file: "imagenes/anton-1.png",
-                msgTime: 15
-            },
-            {
-                text: "Hola nuevamente",
-                file: "videos/anton-2.mp4",
-                msgTime: 15
-            }
+            text: null,
+            fileName: "aud_1420.mp3",
+            url: "/damian/D_001.mp3",
+            msgTime: 0,
+            isFile: true
+        },
+        {
+            text: "Booo",
+            fileName: null,
+            url: null,
+            msgTime: 3250,
+            isFile: false
+        },
+        {
+            text: "No puedo creer que me clavaste de esta manera 🖕",
+            fileName: null,
+            url: null,
+            msgTime: 310,
+            isFile: false
+        },
+        {
+            text: "Hace mil que no salgo",
+            fileName: null,
+            url: null,
+            msgTime: 320,
+            isFile: false
+        },
+        {
+            text: "y vos",
+            fileName: null,
+            url: null,
+            msgTime: 323,
+            isFile: false
+        },
+        {
+            text: "Me dejas solo con estos salvajes",
+            fileName: null,
+            url: null,
+            msgTime: 327,
+            isFile: false
+        },
+        {
+            text: "Estoy preocupado 😬",
+            fileName: "img_9630.jpg",
+            url: "/damian/D_004.jpg",
+            msgTime: 600,
+            isFile: true
+        },
+        {
+            text: "De pedo vine en auto",
+            fileName: null,
+            url: null,
+            msgTime: 1200,
+            isFile: false
+        },
+        {
+            text: "En cualquier momento me las tomo",
+            fileName: null,
+            url: null,
+            msgTime: 1220,
+            isFile: false
+        },
+        {
+            text: "Situación actual",
+            fileName: null,
+            url: null,
+            msgTime: 1560,
+            isFile: false
+        },
+        {
+            text: null,
+            fileName: "vid_9000.mp4",
+            url: "/damian/D_007.mp4",
+            msgTime: 1570,
+            isFile: true
+        },
+        {
+            text: "Me aburroooooo",
+            fileName: null,
+            url: null,
+            msgTime: 1680,
+            isFile: false
+        },
+        {
+            text: "En qué andás vos?",
+            fileName: null,
+            url: null,
+            msgTime: 1690,
+            isFile: false
+        },
+        {
+            text: "Buenoooo 😝😝",
+            fileName: null,
+            url: null,
+            msgTime: 1800,
+            isFile: false
+        },
+        {
+            text: "Maneja Seba 🚗",
+            fileName: "img_9631.jpg",
+            url: "/damian/D_008.jpg",
+            msgTime: 1810,
+            isFile: true
+        },
+        {
+            text: null,
+            fileName: "aud_1421.mp3",
+            url: "/damian/D_009.mp3",
+            msgTime: 1920,
+            isFile: true
+        },
+        {
+            text: "AAAAAHH NOoOO!!",
+            fileName: null,
+            url: null,
+            msgTime: 2220,
+            isFile: false
+        },
+        {
+            text: "Me bloqueó!??!?!?",
+            fileName: "img_9632.jpg",
+            url: "/damian/D_010.jpg",
+            msgTime: 2230,
+            isFile: true
+        },
+        {
+            text: null,
+            fileName: "aud_1422.mp3",
+            url: "/damian/D_011.mp3",
+            msgTime: 2340,
+            isFile: true
+        },
+        {
+            text: "Sabeeeee 😎",
+            fileName: "img_9633.jpg",
+            url: "/damian/D_012.jpg",
+            msgTime: 2520,
+            isFile: true
+        },
+        {
+            text: "LPM!!!",
+            fileName: null,
+            url: null,
+            msgTime: 3000,
+            isFile: false
+        },
+        {
+            text: "Sta acaaa",
+            fileName: null,
+            url: null,
+            msgTime: 3010,
+            isFile: false
+        },
+        {
+            text: "Bo, cn un piiBe",
+            fileName: null,
+            url: null,
+            msgTime: 3020,
+            isFile: false
+        },
+        {
+            text: "👋",
+            fileName: null,
+            url: null,
+            msgTime: 3023,
+            isFile: false
+        },
+        {
+            text: "Nos vimoooo",
+            fileName: null,
+            url: null,
+            msgTime: 3033,
+            isFile: false
+        },
+        {
+            text: null,
+            fileName: "aud_1423.mp3",
+            url: "/damian/D_018.mp3",
+            msgTime: 3240,
+            isFile: true
+        },
+        {
+            text: null,
+            fileName: "aud_1424.mp3",
+            url: "/damian/D_019.mp3",
+            msgTime: 3300,
+            isFile: true
+        },
+        {
+            text: null,
+            fileName: "aud_1425.mp3",
+            url: "/damian/D_020.mp3",
+            msgTime: 3480,
+            isFile: true
+        },
         ]
     }
  
