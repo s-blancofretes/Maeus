@@ -29,11 +29,21 @@ module.exports = {
                     await database.deactivateUserByChatId(db, chatId);
                 }
             }
-
-
         }
-
-
+    },
+    checkDelivered: async function(db) {
+        var users = await database.findUsersActive(db);
+        var totalUser = users.length;
+        var totalCurrentMsg = 0;
+        var totalDeliveredMsg = 0;
+        for (let idx in users) {
+            var user = users[idx];
+            var currentMsg = user.currentMsg;
+            var deliveredMsg = user.deliveredMsg;
+            totalCurrentMsg = totalCurrentMsg + currentMsg;
+            totalDeliveredMsg = totalDeliveredMsg + deliveredMsg;
+        }
+        var result = (totalCurrentMsg - totalDeliveredMsg) / totalUser;
+        return result;
     }
-
 }

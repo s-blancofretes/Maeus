@@ -5,6 +5,7 @@ module.exports = {
             chatId,
             startTime: utils.generateTimestamp(),
             currentMsg: 0,
+            deliveredMsg: 0,
             lastMsgTime: null,
             active: true,
             storyId
@@ -43,6 +44,11 @@ module.exports = {
         var result = await db.collection('users').find(query).toArray();
         return result;
     },
+    findUsersActive: async function(db) {
+        var query = { active: true };
+        var result = await db.collection('users').find(query).toArray();
+        return result;
+    },
 
     updateUsersCurrentMessage: async function(db, chatId, currentMsg) {
         var query = { chatId: chatId };
@@ -54,7 +60,7 @@ module.exports = {
     },
     deactivateUserByChatId: async function(db, chatId) {
         var query = { chatId: chatId };
-        var updateQuery = { active: false, currentMsg: 0 };
+        var updateQuery = { active: false, currentMsg: 0, deliveredMsg: 0 };
         await db.collection('users').update(query, { $set: updateQuery });
     },
     activateUserByChatId: async function(db, chatId) {
@@ -62,5 +68,15 @@ module.exports = {
         var query = { chatId: chatId };
         var updateQuery = { active: true, startTime: now };
         await db.collection('users').update(query, { $set: updateQuery });
-    }
+    },
+    updateUsersDeliveredMessage: async function(db, chatId) {
+        var user = await findUserByChatId(db, chatId)[0];
+        var deliveredMsg = user.deliveredMsg;
+        var query = { chatId: chatId };
+        var updateMsg = deliveredMsg + 1;
+        var updateQuery = { deliveredMsg: updateMsg };
+        //await db.collection('users').findAndModify({ query }, { $set: updateQuery })
+        await db.collection('users').update(query, { $set: updateQuery });
+    },
+
 }
