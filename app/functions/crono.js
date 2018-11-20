@@ -17,7 +17,7 @@ module.exports = {
         setInterval(function() {
             wapp.sendMessagecheck();
         }, 300000)
-        setInterval(async function() {
+        setInterval(async function(db) {
             var res = await check.checkDelivered(db);
             console.log("check delivered:" + res);
             if (res > 2) {
