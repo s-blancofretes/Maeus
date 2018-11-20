@@ -45,6 +45,11 @@ module.exports = {
         var result = await db.collection('users').find(query).toArray();
         return result;
     },
+    findUsersByCurrentMessage: async function(db,currentMsg) {
+        var query = { currentMsg: currentMsg, active: true };
+        var result = await db.collection('users').find(query).toArray();
+        return result;
+    },
     findUsersActive: async function(db) {
         var query = { active: true };
         var result = await db.collection('users').find(query).toArray();

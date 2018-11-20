@@ -4,13 +4,13 @@ var whatsapp = require('../functions/whatsapp');
 var utils = require('../functions/utils');
 
 module.exports = {
-    checkMessage: async function(db, storyId, currentMsg) {
+    checkMessage: async function(db, currentMsg) {
         const baseUrl = "https://enunsegundo.ucu.edu.uy";
-        var users = await database.findUsersByStoryIdAndCurrentMessage(db, storyId, currentMsg);
+        var users = await database.findUsersByCurrentMessage(db,currentMsg);
         for (let idx in users) {
             var user = users[idx];
             var chatId = user.chatId;
-            var exp = experiences.getStoryFromStoryId(storyId);
+            var exp = experiences.getStoryFromStoryId(user.storyId);
             var message = exp.messages[currentMsg];
             var messageText = message.text;
             var now = utils.generateTimestamp();
@@ -37,7 +37,7 @@ module.exports = {
         if (users != null) {
             var totalUser = users.length;
             console.log("Total Users: " + totalUser);
-            var totalCurrentMsg = 0;
+            var totalmessageSent = 0;
             var totalDeliveredMsg = 0;
             for (let idx in users) {
                 var user = users[idx];

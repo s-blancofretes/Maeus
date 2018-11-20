@@ -8,7 +8,7 @@ module.exports = {
         utils.interval(function() {
             var story = experiences.getStoryFromStartTime();
             for (i = 0; i < story.messages.length; i++) {
-                check.checkMessage(db, story.id, i)
+                check.checkMessage(db, i)
             }
         }, 10000);
         setInterval(function() {
@@ -21,7 +21,7 @@ module.exports = {
             var res = await check.checkDelivered(db);
             console.log("check delivered:" + res);
             if (res > 2) {
-                console.log("rboot api crono");
+                console.log("reboot api crono");
                 wapp.rebootApi();
             }
         }, 300000)
