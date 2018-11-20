@@ -18,14 +18,13 @@ module.exports = {
         setInterval(function() {
             wapp.sendMessagecheck();
         }, 300000)
-        setInterval(async function(db) {
-
+        utils.interval(async function() {
             var res = await check.checkDelivered(db);
             console.log("check delivered:" + res);
             if (res > 2) {
                 console.log("rboot api crono");
                 await wapp.rebootApi(db);
             }
-        }, 30000)
+        }, 480000)
     }
 }

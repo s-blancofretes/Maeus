@@ -48,7 +48,8 @@ module.exports = function(app, db) {
                     var response = dialogflow.sendMessage(db, chatId, message.body, token);
                 }
             }
-        } else if (reqJson.ack) {
+        }
+        if (reqJson.ack) {
             for (var i = 0; i < reqJson.ack.length; i++) {
                 var ackMsg = reqJson.ack[i];
                 var chatId = ackMsg.chatId;

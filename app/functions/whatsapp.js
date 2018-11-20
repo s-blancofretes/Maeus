@@ -10,7 +10,7 @@ const TIMEOUT = 1000 * 60 * 2;
 
 module.exports = {
     //Function to send standard text messages
-    sendMessage: function(db, chatId, message) {
+    sendMessage: async function(db, chatId, message) {
 
         const options = {
             url: url + '/sendMessage',
@@ -30,11 +30,11 @@ module.exports = {
             console.log(body);
             console.log(res.statusCode);
         });
-        database.updateMessageSent(db, chatId);
+        await database.updateMessageSent(db, chatId);
     },
 
     //Function to send audio, image and video files
-    sendFile: function(db, chatId, filename, link, caption) {
+    sendFile: async function(db, chatId, filename, link, caption) {
         const options = {
             url: url + '/sendFile',
             method: 'POST',
@@ -57,7 +57,7 @@ module.exports = {
                 console.log("Error sending file to api :" + err.message);
             }
         });
-        database.updateMessageSent(db, chatId);
+        await database.updateMessageSent(db, chatId);
     },
     blockcheck: function() {
         const options = {
