@@ -1,5 +1,5 @@
-const noteRoutes = require('./note_routes');
+const webhookRoutes = require('./webhook');
+
 module.exports = function(app, db) {
-  noteRoutes(app, db);
-  // Other route groups could go here, in the future
+  webhookRoutes(app, db);
 };
