@@ -1,7 +1,8 @@
 var database = require('../functions/database');
+var utils = require('../functions/utils');
 const experiences = require('../experiences');
 var whatsapp = require('../functions/whatsapp');
-var utils = require('../functions/utils');
+
 
 module.exports = {
     checkMessage: async function(db, storyId, currentMsg) {
@@ -23,7 +24,6 @@ module.exports = {
                 } else if (message.isFile) {
                     whatsapp.sendFile(db, chatId, message.fileName, baseUrl + message.url, message.text)
                 }
-
                 await database.updateUsersCurrentMessage(db, chatId, currentMsg);
                 if (exp.totalMsg - 1 == currentMsg) {
                     await database.deactivateUserByChatId(db, chatId);
@@ -37,7 +37,7 @@ module.exports = {
         if (users != null) {
             var totalUser = users.length;
             console.log("Total Users: " + totalUser);
-            var totalCurrentMsg = 0;
+            var totalmessageSent = 0;
             var totalDeliveredMsg = 0;
             for (let idx in users) {
                 var user = users[idx];

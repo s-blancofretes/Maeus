@@ -94,7 +94,8 @@ module.exports = {
 
         request(options, function(err, res, body) {});
     },
-    rebootApi: function() {
+    rebootApi: async function(db) { /*async*/
+        await database.resetcountDeliveredMsgIfActiveUser(db);
         email.sendEmailAlert("Se rebooteo la API");
         const options = {
             url: url + '/reboot',
@@ -116,10 +117,8 @@ module.exports = {
             },
             timeout: TIMEOUT
         };
-        setTimeout(function() {
+        setTimeout(async function() {
             request(options2, function(err, res, body) {});
         }, 60000)
     }
 }
-
-//hacer una variable que sea mensajes enviados y otra que sea el delivered y hacer la misma funcion pero con eso en lugar de currentmsg

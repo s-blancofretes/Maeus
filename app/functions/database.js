@@ -61,7 +61,7 @@ module.exports = {
     },
     deactivateUserByChatId: async function(db, chatId) {
         var query = { chatId: chatId };
-        var updateQuery = { active: false, currentMsg: 0, deliveredMsg: 0 };
+        var updateQuery = { active: false, currentMsg: 0, deliveredMsg: 0, messageSent: 0 };
         await db.collection('users').update(query, { $set: updateQuery });
     },
     activateUserByChatId: async function(db, chatId) {
@@ -80,12 +80,20 @@ module.exports = {
     },
     verifyUserIsInCurrentMsg: async function(db, chatId) {
         var query = { chatId: chatId, active: true };
-        var result = await db.collection('users').find(query).limit(1).toArray();
-        if (result.length > 0) {
-            if (result.currentMsg < 20) {
+        var user = await db.collection('users').find(query).limit(1).toArray();
+        var currentMsg = user[0].currentMsg;
+        console.log(currentMsg);
+        if (user) {
+            console.log("despues del length" + currentMsg)
+            if (currentMsg < 20) {
+                console.log(" adentro del if es menor de 20" + currentMsg);
                 return true
             }
         } else return false;
     },
-
+    resetcountDeliveredMsgIfActiveUser: async function(db) {
+        var query = { active: true };
+        var updateQuery = { deliveredMsg: 0, messageSent: 0 };
+        await db.collection('users').update(query, { $set: updateQuery }, { multi: true });
+    },
 }

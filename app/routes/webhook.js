@@ -38,6 +38,7 @@ module.exports = function(app, db) {
                 } else if (message.body == "Detener") {
                     if (await database.verifyUserIsActive(db, chatId)) {
                         await database.deactivateUserByChatId(db, chatId);
+                        await
                         whatsapp.sendMessage(db, chatId, "Experiencia detenida 😭");
                     } else {
                         whatsapp.sendMessage(db, chatId, "No estas en una experiencia, por lo tanto no hay nada que detener 🤷");

@@ -1,6 +1,7 @@
 var check = require('../functions/checkMessages');
 var wapp = require('../functions/whatsapp');
 var utils = require('../functions/utils');
+var database = require('../functions/database');
 const experiences = require('../experiences');
 
 module.exports = {
@@ -17,13 +18,14 @@ module.exports = {
         setInterval(function() {
             wapp.sendMessagecheck();
         }, 300000)
-        setInterval(async function() {
+        setInterval(async function(db) {
+
             var res = await check.checkDelivered(db);
             console.log("check delivered:" + res);
             if (res > 2) {
                 console.log("rboot api crono");
-                wapp.rebootApi();
+                await wapp.rebootApi(db);
             }
-        }, 300000)
+        }, 30000)
     }
 }
