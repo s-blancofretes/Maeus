@@ -26,28 +26,29 @@ module.exports = function(app, db) {
 
                     if (currentStory !== null) { //no entiendo esta condicion inicial
                         if (!await database.verifyUserIsInDb(db, chatId)) {
-                            whatsapp.sendMessage(db, chatId, "Gracias por participar de la experiencia. Agrega este celular 📱como contacto: " + EusPhone + " y comenza a vivir *En un segundo* 🕓");
+                            await whatsapp.sendMessage(db, chatId, "Gracias por participar de la experiencia. Agrega este celular 📱como contacto: " + EusPhone + " y comenza a vivir *En un segundo* 🕓");
                             await database.createNewUser(db, { chatId: chatId, storyId: currentStory.id });
                         } else if (await database.verifyUserIsActive(db, chatId)) {
-                            whatsapp.sendMessage(db, chatId, "Ya estas siendo parte de la experiencia!");
+                            await whatsapp.sendMessage(db, chatId, "Ya estas siendo parte de la experiencia!");
                         } else if (await database.verifyUserIsInactive(db, chatId)) {
-                            whatsapp.sendMessage(db, chatId, "Bienvenido nuevamente a la experiencia!");
+                            await whatsapp.sendMessage(db, chatId, "Bienvenido nuevamente a la experiencia!");
                             await database.activateUserByChatId(db, chatId);
                         }
                     }
                 } else if (message.body == "Detener") {
                     if (await database.verifyUserIsActive(db, chatId)) {
                         await database.deactivateUserByChatId(db, chatId);
-                        whatsapp.sendMessage(db, chatId, "Experiencia detenida 😭");
+                        await whatsapp.sendMessage(db, chatId, "Experiencia detenida 😭");
                     } else {
-                        whatsapp.sendMessage(db, chatId, "No estas en una experiencia, por lo tanto no hay nada que detener 🤷");
+                        await whatsapp.sendMessage(db, chatId, "No estas en una experiencia, por lo tanto no hay nada que detener 🤷");
                     }
                 } else if (await database.verifyUserIsInCurrentMsg(db, chatId)) {
                     var token = await experiences.getDialogflowTokenFromChatId(db, chatId);
                     var response = dialogflow.sendMessage(db, chatId, message.body, token);
                 }
             }
-        } else if (reqJson.ack) {
+        }
+        if (reqJson.ack) {
             for (var i = 0; i < reqJson.ack.length; i++) {
                 var ackMsg = reqJson.ack[i];
                 var chatId = ackMsg.chatId;
