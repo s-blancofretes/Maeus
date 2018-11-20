@@ -49,6 +49,10 @@ exports.getStoryFromStoryId = function(storyId) {
     return experiencias[storyId];
 }
 
+exports.getMaxMessageLength = function(storyId) {
+    return experiencias[storyId];
+}
+
 exports.getDialogflowTokenFromChatId = async function(db, chatId) {
     user = await database.findUserByChatId(db, chatId);
     var storyId = user[0].storyId;
