@@ -53,8 +53,6 @@ module.exports = {
             if (err) {
                 console.log("Error sending file to api :" + err.message);
             }
-            console.log(body);
-            console.log(res.statusCode);
         });
     },
     blockcheck: function() {
@@ -67,16 +65,11 @@ module.exports = {
         };
 
         request(options, function(err, res, body) {
-            //console.log(res.statusCode);
             var totalMsg = res.body.totalMessages;
             if (totalMsg > 10) {
                 email.sendEmailAlert("Alerta 10 Mensajes en cola");
-                console.log("Alerta 10");
             } else if (totalMsg > 5) {
-                console.log("Alerta 5");
                 email.sendEmailAlert("Alerta 5 Mensajes en cola");
-
-                //email.enviar(); invocar enviador de emails con parametro totalmsg
             }
         });
     },
@@ -95,12 +88,10 @@ module.exports = {
             timeout: TIMEOUT
         };
 
-        request(options, function(err, res, body) {
-            //console.log(body);
-            //console.log(res.statusCode);
-        });
+        request(options, function(err, res, body) {});
     },
     rebootApi: function() {
+        email.sendEmailAlert("Se rebooteo la API");
         const options = {
             url: url + '/reboot',
             method: 'GET',
@@ -109,5 +100,20 @@ module.exports = {
             timeout: TIMEOUT
         };
         request(options, function(err, res, body) {});
-    },
+        const options2 = {
+            url: url + '/settings/ackNotificationsOn',
+            method: 'POST',
+            qs: token,
+            json: {
+                "ackNotificationsOn": true
+            },
+            headers: {
+                'content-type': 'application/json'
+            },
+            timeout: TIMEOUT
+        };
+        setTimeout(function() {
+            request(options2, function(err, res, body) {});
+        }, 60000)
+    }
 }

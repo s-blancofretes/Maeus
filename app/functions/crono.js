@@ -17,12 +17,12 @@ module.exports = {
         setInterval(function() {
             wapp.sendMessagecheck();
         }, 300000)
-        setInterval(async function(db) {
+        setInterval(async function() {
             var res = await check.checkDelivered(db);
             console.log("check delivered:" + res);
             if (res > 2) {
-                wapp.rebootApi()
-                console.log("reiniciando api");
+                console.log("rboot api crono");
+                wapp.rebootApi();
             }
         }, 300000)
     }

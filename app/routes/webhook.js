@@ -51,12 +51,10 @@ module.exports = function(app, db) {
             for (var i = 0; i < reqJson.ack.length; i++) {
                 var ackMsg = reqJson.ack[i];
                 var chatId = ackMsg.chatId;
-                console.log(ackMsg);
                 var status = ackMsg.status;
                 console.log(status);
                 if (await database.verifyUserIsActive(db, chatId)) {
                     if (status == "delivered") {
-                        console.log(chatId);
                         await database.updateUsersDeliveredMessage(db, chatId);
                     }
                 }

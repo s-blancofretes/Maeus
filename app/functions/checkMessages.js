@@ -33,17 +33,22 @@ module.exports = {
     },
     checkDelivered: async function(db) {
         var users = await database.findUsersActive(db);
-        var totalUser = users.length;
-        var totalCurrentMsg = 0;
-        var totalDeliveredMsg = 0;
-        for (let idx in users) {
-            var user = users[idx];
-            var currentMsg = user.currentMsg;
-            var deliveredMsg = user.deliveredMsg;
-            totalCurrentMsg = totalCurrentMsg + currentMsg;
-            totalDeliveredMsg = totalDeliveredMsg + deliveredMsg;
+        console.log(users.length);
+        if (users != null) {
+            var totalUser = users.length;
+            console.log("Total Users: " + totalUser);
+            var totalCurrentMsg = 0;
+            var totalDeliveredMsg = 0;
+            for (let idx in users) {
+                var user = users[idx];
+                var currentMsg = user.currentMsg;
+                var deliveredMsg = user.deliveredMsg;
+                totalCurrentMsg = totalCurrentMsg + currentMsg;
+                totalDeliveredMsg = totalDeliveredMsg + deliveredMsg;
+            }
+            var result = (totalCurrentMsg - totalDeliveredMsg) / totalUser;
+            console.log("Result: " + result);
+            return result;
         }
-        var result = (totalCurrentMsg - totalDeliveredMsg) / totalUser;
-        return result;
     }
 }

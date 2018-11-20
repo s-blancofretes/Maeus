@@ -70,13 +70,8 @@ module.exports = {
         await db.collection('users').update(query, { $set: updateQuery });
     },
     updateUsersDeliveredMessage: async function(db, chatId) {
-        var user = await findUserByChatId(db, chatId)[0];
-        var deliveredMsg = user.deliveredMsg;
         var query = { chatId: chatId };
-        var updateMsg = deliveredMsg + 1;
-        var updateQuery = { deliveredMsg: updateMsg };
-        //await db.collection('users').findAndModify({ query }, { $set: updateQuery })
-        await db.collection('users').update(query, { $set: updateQuery });
+        await db.collection('users').update(query, { $inc: { deliveredMsg: 1 } });
     },
 
 }
