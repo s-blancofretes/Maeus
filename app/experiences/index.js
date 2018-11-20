@@ -57,13 +57,13 @@ exports.getDialogflowTokenFromChatId = async function(db, chatId) {
     user = await database.findUserByChatId(db, chatId);
     var storyId = user[0].storyId;
     if (storyId == 1) {
-        return "tokenAnton"
+        return "b16833c77d57450c9f603eb700d45967"
     } else if (storyId == 2) {
         return "f2c76dd2bad6464db2e32febf8de6281"
     } else if (storyId == 3) {
-        return "tokenSilvina"
+        return "a24cfe0e79dd465a8b0c091052b3ab40"
     } else if (storyId == 4) {
-        return "tokenDamian"
+        return "48db8e1b9a99424f987689661e50fd50"
     }
 }
 
