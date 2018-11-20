@@ -2,13 +2,15 @@ const request = require('request');
 const bodyParser = require('body-parser');
 const querystring = require('querystring')
 var email = require('../functions/email');
+var database = require('../functions/database');
 const url = 'https://eu10.chat-api.com/instance8578';
 var token = { token: 'eu8htn7gz3no08ed' };
+var utils = require('../functions/utils');
 const TIMEOUT = 1000 * 60 * 2;
 
 module.exports = {
     //Function to send standard text messages
-    sendMessage: function(chatId, message) {
+    sendMessage: function(db, chatId, message) {
 
         const options = {
             url: url + '/sendMessage',
@@ -28,10 +30,11 @@ module.exports = {
             console.log(body);
             console.log(res.statusCode);
         });
+        database.updateMessageSent(db, chatId);
     },
 
     //Function to send audio, image and video files
-    sendFile: function(chatId, filename, link, caption) {
+    sendFile: function(db, chatId, filename, link, caption) {
         const options = {
             url: url + '/sendFile',
             method: 'POST',
@@ -53,9 +56,8 @@ module.exports = {
             if (err) {
                 console.log("Error sending file to api :" + err.message);
             }
-            console.log(body);
-            console.log(res.statusCode);
         });
+        database.updateMessageSent(db, chatId);
     },
     blockcheck: function() {
         const options = {
@@ -67,16 +69,11 @@ module.exports = {
         };
 
         request(options, function(err, res, body) {
-            //console.log(res.statusCode);
             var totalMsg = res.body.totalMessages;
             if (totalMsg > 10) {
                 email.sendEmailAlert("Alerta 10 Mensajes en cola");
-                console.log("Alerta 10");
             } else if (totalMsg > 5) {
-                console.log("Alerta 5");
                 email.sendEmailAlert("Alerta 5 Mensajes en cola");
-
-                //email.enviar(); invocar enviador de emails con parametro totalmsg
             }
         });
     },
@@ -95,9 +92,34 @@ module.exports = {
             timeout: TIMEOUT
         };
 
-        request(options, function(err, res, body) {
-            //console.log(body);
-            //console.log(res.statusCode);
-        });
+        request(options, function(err, res, body) {});
     },
+    rebootApi: function() {
+        email.sendEmailAlert("Se rebooteo la API");
+        const options = {
+            url: url + '/reboot',
+            method: 'GET',
+            qs: token,
+            json: true,
+            timeout: TIMEOUT
+        };
+        request(options, function(err, res, body) {});
+        const options2 = {
+            url: url + '/settings/ackNotificationsOn',
+            method: 'POST',
+            qs: token,
+            json: {
+                "ackNotificationsOn": true
+            },
+            headers: {
+                'content-type': 'application/json'
+            },
+            timeout: TIMEOUT
+        };
+        setTimeout(function() {
+            request(options2, function(err, res, body) {});
+        }, 60000)
+    }
 }
+
+//hacer una variable que sea mensajes enviados y otra que sea el delivered y hacer la misma funcion pero con eso en lugar de currentmsg
