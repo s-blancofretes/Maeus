@@ -19,9 +19,9 @@ module.exports = {
 
             if (interval >= startTime) {
                 if (!message.isFile) {
-                    whatsapp.sendMessage(chatId, messageText);
+                    whatsapp.sendMessage(db, chatId, messageText);
                 } else if (message.isFile) {
-                    whatsapp.sendFile(chatId, message.fileName, baseUrl + message.url, message.text)
+                    whatsapp.sendFile(db, chatId, message.fileName, baseUrl + message.url, message.text)
                 }
 
                 await database.updateUsersCurrentMessage(db, chatId, currentMsg);
@@ -41,12 +41,12 @@ module.exports = {
             var totalDeliveredMsg = 0;
             for (let idx in users) {
                 var user = users[idx];
-                var currentMsg = user.currentMsg;
+                var messageSent = user.messageSent;
                 var deliveredMsg = user.deliveredMsg;
-                totalCurrentMsg = totalCurrentMsg + currentMsg;
+                totalmessageSent = totalmessageSent + messageSent;
                 totalDeliveredMsg = totalDeliveredMsg + deliveredMsg;
             }
-            var result = (totalCurrentMsg - totalDeliveredMsg) / totalUser;
+            var result = (totalmessageSent - totalDeliveredMsg) / totalUser;
             console.log("Result: " + result);
             return result;
         }

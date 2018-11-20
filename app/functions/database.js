@@ -6,6 +6,7 @@ module.exports = {
             startTime: utils.generateTimestamp(),
             currentMsg: 0,
             deliveredMsg: 0,
+            messageSent: 0,
             lastMsgTime: null,
             active: true,
             storyId
@@ -72,6 +73,19 @@ module.exports = {
     updateUsersDeliveredMessage: async function(db, chatId) {
         var query = { chatId: chatId };
         await db.collection('users').update(query, { $inc: { deliveredMsg: 1 } });
+    },
+    updateMessageSent: async function(db, chatId) {
+        var query = { chatId: chatId };
+        await db.collection('users').update(query, { $inc: { messageSent: 1 } });
+    },
+    verifyUserIsInCurrentMsg: async function(db, chatId) {
+        var query = { chatId: chatId, active: true };
+        var result = await db.collection('users').find(query).limit(1).toArray();
+        if (result.length > 0) {
+            if (result.currentMsg < 20) {
+                return true
+            }
+        } else return false;
     },
 
 }

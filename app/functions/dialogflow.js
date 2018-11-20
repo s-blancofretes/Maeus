@@ -5,7 +5,7 @@ var whatsapp = require('../functions/whatsapp');
 
 module.exports = {
     //Function to send message to dialogflow api and get the answer
-    sendMessage: function(chatId, message, token) {
+    sendMessage: function(db, chatId, message, token) {
         var app = apiai(token);
 
         var options = {
@@ -15,7 +15,7 @@ module.exports = {
         var request = app.textRequest(message, options);
 
         request.on('response', function(response) {
-            whatsapp.sendMessage(chatId, response.result.fulfillment.speech);
+            whatsapp.sendMessage(db, chatId, response.result.fulfillment.speech);
             return response.result.fulfillment.speech;
         });
 

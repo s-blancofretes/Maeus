@@ -2,13 +2,15 @@ const request = require('request');
 const bodyParser = require('body-parser');
 const querystring = require('querystring')
 var email = require('../functions/email');
+var database = require('../functions/database');
 const url = 'https://eu10.chat-api.com/instance8578';
 var token = { token: 'eu8htn7gz3no08ed' };
+var utils = require('../functions/utils');
 const TIMEOUT = 1000 * 60 * 2;
 
 module.exports = {
     //Function to send standard text messages
-    sendMessage: function(chatId, message) {
+    sendMessage: function(db, chatId, message) {
 
         const options = {
             url: url + '/sendMessage',
@@ -28,10 +30,11 @@ module.exports = {
             console.log(body);
             console.log(res.statusCode);
         });
+        database.updateMessageSent(db, chatId);
     },
 
     //Function to send audio, image and video files
-    sendFile: function(chatId, filename, link, caption) {
+    sendFile: function(db, chatId, filename, link, caption) {
         const options = {
             url: url + '/sendFile',
             method: 'POST',
@@ -54,6 +57,7 @@ module.exports = {
                 console.log("Error sending file to api :" + err.message);
             }
         });
+        database.updateMessageSent(db, chatId);
     },
     blockcheck: function() {
         const options = {
@@ -117,3 +121,5 @@ module.exports = {
         }, 60000)
     }
 }
+
+//hacer una variable que sea mensajes enviados y otra que sea el delivered y hacer la misma funcion pero con eso en lugar de currentmsg
