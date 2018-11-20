@@ -45,7 +45,7 @@ module.exports = {
         var result = await db.collection('users').find(query).toArray();
         return result;
     },
-    findUsersByCurrentMessage: async function(db,currentMsg) {
+    findUsersByCurrentMessage: async function(db, currentMsg) {
         var query = { currentMsg: currentMsg, active: true };
         var result = await db.collection('users').find(query).toArray();
         return result;
@@ -86,9 +86,8 @@ module.exports = {
     verifyUserIsInCurrentMsg: async function(db, chatId) {
         var query = { chatId: chatId, active: true };
         var user = await db.collection('users').find(query).limit(1).toArray();
-        var currentMsg = user[0].currentMsg;
-        console.log(currentMsg);
         if (user) {
+            var currentMsg = user[0].currentMsg;
             console.log("despues del length" + currentMsg)
             if (currentMsg < 20) {
                 console.log(" adentro del if es menor de 20" + currentMsg);
