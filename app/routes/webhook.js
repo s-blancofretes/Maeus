@@ -32,6 +32,7 @@ module.exports = function(app, db) {
                             await whatsapp.sendMessage(db, chatId, "Ya estas siendo parte de la experiencia!");
                         } else if (await database.verifyUserIsInactive(db, chatId)) {
                             await whatsapp.sendMessage(db, chatId, "Bienvenido nuevamente a la experiencia!");
+                            await database.updateUsersStoryId(db, chatId, currentStory.id);
                             await database.activateUserByChatId(db, chatId);
                         }
                     }

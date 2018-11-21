@@ -104,4 +104,10 @@ module.exports = {
         var updateQuery = { deliveredMsg: 0, messageSent: 0 };
         await db.collection('users').update(query, { $set: updateQuery }, { multi: true });
     },
+    updateUsersStoryId: async function(db, chatId, storyId) {
+        var query = { chatId: chatId };
+        var updatestoryId = storyId;
+        var updateQuery = { storyId: updatestoryId };
+        await db.collection('users').update(query, { $set: updateQuery });
+    },
 }
