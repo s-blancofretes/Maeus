@@ -317,7 +317,7 @@ module.exports = {
                 isFile: false
             },
             {
-                text: "En breves empiezo con el maquillaje ",
+                text: "En breve empiezo con el maquillaje ",
                 fileName: null,
                 url: null,
                 msgTime: 1450,
@@ -629,7 +629,7 @@ module.exports = {
             {
                 text: "!!!",
                 fileName: "img_5555.jpg",
-                url: "/silvina/S_0011.jpg",
+                url: "/silvina/S_011.jpg",
                 msgTime: 2100,
                 isFile: true
             },
