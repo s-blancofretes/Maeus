@@ -723,7 +723,7 @@ module.exports = {
                 text: "Booo",
                 fileName: null,
                 url: null,
-                msgTime: 3250,
+                msgTime: 300,
                 isFile: false
             },
             {
