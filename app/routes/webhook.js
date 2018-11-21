@@ -43,9 +43,11 @@ module.exports = function(app, db) {
                     } else {
                         await whatsapp.sendMessage(db, chatId, "No estas en una experiencia, por lo tanto no hay nada que detener 🤷");
                     }
-                } else if (await database.verifyUserIsInCurrentMsg(db, chatId)) {
-                    var token = await experiences.getDialogflowTokenFromChatId(db, chatId);
-                    var response = dialogflow.sendMessage(db, chatId, message.body, token);
+                } else if (message.fromMe == false) {
+                    if (await database.verifyUserIsInCurrentMsg(db, chatId)) {
+                        var token = await experiences.getDialogflowTokenFromChatId(db, chatId);
+                        var response = dialogflow.sendMessage(db, chatId, message.body, token);
+                    }
                 }
             }
         }
