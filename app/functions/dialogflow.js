@@ -15,8 +15,12 @@ module.exports = {
         var request = app.textRequest(message, options);
 
         request.on('response', function(response) {
-            whatsapp.sendMessage(db, chatId, response.result.fulfillment.speech);
-            return response.result.fulfillment.speech;
+            if (!response.result.fulfillment.speech == '') {
+                whatsapp.sendMessage(db, chatId, response.result.fulfillment.speech);
+            } else if (response.result.fulfillment.speech == '') {
+                console.log("Respuesta de dialogflow vacia");
+            }
+
         });
 
         request.on('error', function(error) {
