@@ -26,6 +26,11 @@ module.exports = {
             return true
         } else return false;
     },
+    getActiveUsersCount: async function(db) {
+        var query = { active: true };
+        var result = await db.collection('users').find(query).toArray();
+        return result.length;
+    },
     verifyUserIsInactive: async function(db, chatId) {
         var query = { chatId: chatId, active: false };
         var result = await db.collection('users').find(query).limit(1).toArray();

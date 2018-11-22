@@ -1,5 +1,4 @@
 const experiencias = require('./experiences');
-const moment = require('moment');
 var database = require('../functions/database');
 
 exports.obtenerExperienciaSegunHoraDeInicio = function(now) {
@@ -24,11 +23,9 @@ exports.obtenerExperienciaSegunHoraDeInicio = function(now) {
 
 exports.getStoryFromStartTime = function(now) {
     var date = new Date();
-    console.log(date);
     var now = "" + date.getUTCHours() //+ date.getUTCMinutes();
-    console.log(now);
     var nowInt = parseInt(now, 10);
-    console.log(nowInt);
+
     if (7 <= nowInt && nowInt < 14) {
         //console.log("estamos en exp 1");
         return experiencias["1"];
@@ -51,8 +48,16 @@ exports.getStoryFromStoryId = function(storyId) {
     return experiencias[storyId];
 }
 
-exports.getMaxMessageLength = function(storyId) {
-    return experiencias[storyId];
+exports.getMaxMessageLength = function() {
+    var lengthOne = experiencias["1"].messages.length;
+    var lengthTwo = experiencias["2"].messages.length;
+    var lengthThree = experiencias["3"].messages.length;
+    var lengthFour = experiencias["4"].messages.length;
+    return Math.max(lengthOne, lengthTwo, lengthThree, lengthFour);
+}
+
+exports.getTotalMsgByStoryId = function(storyId) {
+    return experiencias[storyId].messages.length;
 }
 
 exports.getDialogflowTokenFromChatId = async function(db, chatId) {
@@ -72,6 +77,5 @@ exports.getDialogflowTokenFromChatId = async function(db, chatId) {
 function fechaApartirDeHora(hora) {
     const splitted = hora.split(":");
     const now = new Date();
-    console.log(hora);
     return new Date(now.getFullYear(), now.getMonth(), now.getDate(), splitted[0], splitted[1]);
 }

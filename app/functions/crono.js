@@ -1,14 +1,12 @@
 var check = require('../functions/checkMessages');
 var wapp = require('../functions/whatsapp');
 var utils = require('../functions/utils');
-var database = require('../functions/database');
 const experiences = require('../experiences');
 
 module.exports = {
     crono: function(db) {
         utils.interval(function() {
-            var story = experiences.getStoryFromStartTime();
-            for (i = 0; i < story.messages.length; i++) {
+            for (i = 0; i < experiences.getMaxMessageLength(); i++) {
                 check.checkMessage(db, i)
             }
         }, 10000);

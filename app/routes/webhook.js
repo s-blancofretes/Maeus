@@ -18,10 +18,10 @@ module.exports = function(app, db) {
             for (var i = 0; i < reqJson.messages.length; i++) {
                 const EusPhone = "091940835";
                 var message = reqJson.messages[i];
-                var chatId = message.author; //porq tomamos el autor y no de una el chatid?
+                var chatId = message.author;
 
                 if (message.body == "En un segundo") {
-                    // var currentStory = experiencias.obtenerExperienciaSegunHoraDeInicio();
+
                     var currentStory = experiences.getStoryFromStartTime();
 
                     if (currentStory !== null) { //no entiendo esta condicion inicial

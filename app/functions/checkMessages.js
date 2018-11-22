@@ -25,7 +25,7 @@ module.exports = {
                     whatsapp.sendFile(db, chatId, message.fileName, baseUrl + message.url, message.text)
                 }
                 await database.updateUsersCurrentMessage(db, chatId, currentMsg);
-                if (exp.totalMsg - 1 == currentMsg) {
+                if (experiences.getTotalMsgByStoryId(user.storyId) - 1 == currentMsg) {
                     await database.deactivateUserByChatId(db, chatId);
                 }
             }

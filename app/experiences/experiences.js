@@ -2,10 +2,6 @@ module.exports = {
     "1": {
         id: 1,
         name: "Anton",
-        totalMsg: 25,
-        startTime: "04:00",
-        endTime: "11:00",
-        duration: 27,
         messages: [{
                 text: "Aprontandome para la caminata",
                 fileName: "img_a001.jpg",
@@ -200,10 +196,6 @@ module.exports = {
     "2": {
         id: 2,
         name: "Olivia",
-        totalMsg: 39,
-        startTime: "11:31",
-        endTime: "17:00",
-        duration: 30,
         messages: [{
                 text: null,
                 fileName: "vid_1501.mp4",
@@ -482,10 +474,6 @@ module.exports = {
     "3": {
         id: 3,
         name: "Silvina",
-        totalMsg: 31,
-        startTime: "17:00",
-        endTime: "22:00",
-        duration: 30,
         messages: [{
                 text: null,
                 fileName: "au_5604.mp3",
@@ -708,10 +696,6 @@ module.exports = {
     "4": {
         id: 4,
         name: "Damian",
-        totalMsg: 28,
-        startTime: "22:00",
-        endTime: "03:59",
-        duration: 30,
         messages: [{
                 text: null,
                 fileName: "aud_1420.mp3",
