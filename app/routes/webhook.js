@@ -32,6 +32,7 @@ module.exports = function(app, db) {
                             await whatsapp.sendMessage(db, chatId, "Ya estas siendo parte de la experiencia!");
                         } else if (await database.verifyUserIsInactive(db, chatId)) {
                             await whatsapp.sendMessage(db, chatId, "Bienvenido nuevamente a la experiencia!");
+                            await database.updateUsersStoryId(db, chatId, currentStory.id);
                             await database.activateUserByChatId(db, chatId);
                         }
                     }
@@ -42,9 +43,11 @@ module.exports = function(app, db) {
                     } else {
                         await whatsapp.sendMessage(db, chatId, "No estas en una experiencia, por lo tanto no hay nada que detener 🤷");
                     }
-                } else if (await database.verifyUserIsInCurrentMsg(db, chatId)) {
-                    var token = await experiences.getDialogflowTokenFromChatId(db, chatId);
-                    var response = dialogflow.sendMessage(db, chatId, message.body, token);
+                } else if (message.fromMe == false) {
+                    if (await database.verifyUserIsInCurrentMsg(db, chatId)) {
+                        var token = await experiences.getDialogflowTokenFromChatId(db, chatId);
+                        var response = dialogflow.sendMessage(db, chatId, message.body, token);
+                    }
                 }
             }
         }

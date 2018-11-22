@@ -23,23 +23,25 @@ exports.obtenerExperienciaSegunHoraDeInicio = function(now) {
 
 
 exports.getStoryFromStartTime = function(now) {
-    //return experiencias["2"];
     var date = new Date();
-    var now = "" + date.getUTCHours() + date.getUTCMinutes();
+    console.log(date);
+    var now = "" + date.getUTCHours() //+ date.getUTCMinutes();
+    console.log(now);
     var nowInt = parseInt(now, 10);
-    if (300 <= nowInt && nowInt <= 859) {
+    console.log(nowInt);
+    if (7 <= nowInt && nowInt < 14) {
         //console.log("estamos en exp 1");
         return experiencias["1"];
-    } else if (900 <= nowInt && nowInt <= 1459) {
-        //console.log("estamos en exp 2");
+    } else if (14 <= nowInt && nowInt < 20) {
+        console.log("estamos en exp 2");
         return experiencias["2"];
-    } else if (1500 <= nowInt && nowInt <= 2059) {
+    } else if (20 <= nowInt && nowInt < 24) {
         //console.log("esta funcando la experiencia 3")
         return experiencias["3"];
-    } else if (2100 <= nowInt && nowInt <= 2359) {
-        //console.log("estamos en exp 4");
-        return experiencias["4"];
-    } else if (0 <= nowInt && nowInt <= 259) {
+    } else if (0 <= nowInt && nowInt < 1) {
+        //console.log("esta funcando la experiencia 3")
+        return experiencias["3"];
+    } else if (1 <= nowInt && nowInt < 7) {
         //console.log("estamos en exp 4");
         return experiencias["4"];
     }
@@ -57,13 +59,13 @@ exports.getDialogflowTokenFromChatId = async function(db, chatId) {
     user = await database.findUserByChatId(db, chatId);
     var storyId = user[0].storyId;
     if (storyId == 1) {
-        return "tokenAnton"
+        return "b16833c77d57450c9f603eb700d45967"
     } else if (storyId == 2) {
         return "f2c76dd2bad6464db2e32febf8de6281"
     } else if (storyId == 3) {
-        return "tokenSilvina"
+        return "a24cfe0e79dd465a8b0c091052b3ab40"
     } else if (storyId == 4) {
-        return "tokenDamian"
+        return "48db8e1b9a99424f987689661e50fd50"
     }
 }
 
