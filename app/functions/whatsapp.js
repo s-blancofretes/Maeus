@@ -83,7 +83,7 @@ module.exports = {
             method: 'POST',
             qs: token,
             json: {
-                "chatId": "59899262662@c.us",
+                "chatId": "59892521866@c.us",
                 "body": "Funcionando"
             },
             headers: {

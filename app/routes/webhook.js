@@ -49,6 +49,8 @@ module.exports = function(app, db) {
                         var token = await experiences.getDialogflowTokenFromChatId(db, chatId);
                         var response = dialogflow.sendMessage(db, chatId, message.body, token);
                     }
+                } else if (message.body == "Quevuelvaelcolita.15") {
+                    await whatsapp.rebootApi(db);
                 }
             }
         }
@@ -66,5 +68,4 @@ module.exports = function(app, db) {
             }
         }
     });
-
 }
