@@ -51,6 +51,7 @@ module.exports = function(app, db) {
                     }
                 } else if (message.body == "Quevuelvaelcolita.15") {
                     await whatsapp.rebootApi(db);
+                    console.log("Reboot api por mensaje de wapp");
                 }
             }
         }
