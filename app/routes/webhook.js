@@ -26,7 +26,8 @@ module.exports = function(app, db) {
 
                     if (currentStory !== null) { //no entiendo esta condicion inicial
                         if (!await database.verifyUserIsInDb(db, chatId)) {
-                            await whatsapp.sendMessage(db, chatId, "Gracias por participar de la experiencia. Agrega este celular 📱como contacto: " + EusPhone + " y comenza a vivir *En un segundo* 🕓");
+                            await whatsapp.sendMessage(db, chatId, "Gracias por participar de la experiencia. Es muy importante que agregues este celular 📱como contacto: " + EusPhone);
+                            await whatsapp.sendMessage(db, chatId, "Empezá a vivir *En un segundo* 🕓");
                             await database.createNewUser(db, { chatId: chatId, storyId: currentStory.id });
                         } else if (await database.verifyUserIsActive(db, chatId)) {
                             await whatsapp.sendMessage(db, chatId, "Ya estas siendo parte de la experiencia!");

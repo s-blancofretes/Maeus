@@ -22,6 +22,6 @@ module.exports = {
                 console.log("Rebooting API");
                 await wapp.rebootApi(db);
             }
-        }, 480000)
+        }, 300000)
     }
 }

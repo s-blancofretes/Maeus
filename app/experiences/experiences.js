@@ -6,21 +6,21 @@ module.exports = {
                 text: "Aprontandome para la caminata",
                 fileName: "img_a001.jpg",
                 url: "/anton/A_001.jpg",
-                msgTime: 0,
+                msgTime: 30,
                 isFile: true
             },
             {
                 text: "Tremendo día!",
                 fileName: null,
                 url: null,
-                msgTime: 5,
+                msgTime: 40,
                 isFile: false
             },
             {
                 text: "Vos bien?",
                 fileName: null,
                 url: null,
-                msgTime: 10,
+                msgTime: 50,
                 isFile: false
             },
             {
@@ -191,6 +191,13 @@ module.exports = {
                 msgTime: 4260,
                 isFile: true
             },
+            {
+                text: "Entrá a http://enunsegundo.uy/end para finalizar la experiencia. Muchas gracias por participar!",
+                fileName: null,
+                url: null,
+                msgTime: 4280,
+                isFile: false
+            }
         ]
     },
     "2": {
@@ -200,35 +207,35 @@ module.exports = {
                 text: null,
                 fileName: "vid_1501.mp4",
                 url: "/olivia/O_001.mp4",
-                msgTime: 0,
+                msgTime: 30,
                 isFile: true
             },
             {
                 text: "Un videito para que no me extrañes",
                 fileName: null,
                 url: null,
-                msgTime: 5,
+                msgTime: 35,
                 isFile: false
             },
             {
                 text: "Una lastima que no puedas estar aca en los aprontes 😢😢",
                 fileName: null,
                 url: null,
-                msgTime: 10,
+                msgTime: 45,
                 isFile: false
             },
             {
                 text: "Y vos? en que andas?",
                 fileName: null,
                 url: null,
-                msgTime: 15,
+                msgTime: 55,
                 isFile: false
             },
             {
                 text: "🙏🙏🙏 no llegues tarde a la iglesia!!",
                 fileName: null,
                 url: null,
-                msgTime: 20,
+                msgTime: 65,
                 isFile: false
             },
             {
@@ -468,6 +475,13 @@ module.exports = {
                 url: "/olivia/O_016.mp3",
                 msgTime: 5640,
                 isFile: true
+            },
+            {
+                text: "Entrá a http://enunsegundo.uy/end para finalizar la experiencia. Muchas gracias por participar!",
+                fileName: null,
+                url: null,
+                msgTime: 5660,
+                isFile: false
             }
         ]
     },
@@ -478,7 +492,7 @@ module.exports = {
                 text: null,
                 fileName: "au_5604.mp3",
                 url: "/silvina/S_001.mp3",
-                msgTime: 0,
+                msgTime: 30,
                 isFile: true
             },
             {
@@ -691,6 +705,13 @@ module.exports = {
                 msgTime: 3600,
                 isFile: true
             },
+            {
+                text: "Entrá a http://enunsegundo.uy/end para finalizar la experiencia. Muchas gracias por participar!",
+                fileName: null,
+                url: null,
+                msgTime: 3620,
+                isFile: false
+            }
         ]
     },
     "4": {
@@ -700,7 +721,7 @@ module.exports = {
                 text: null,
                 fileName: "aud_1420.mp3",
                 url: "/damian/D_001.mp3",
-                msgTime: 0,
+                msgTime: 30,
                 isFile: true
             },
             {
@@ -892,6 +913,13 @@ module.exports = {
                 msgTime: 3480,
                 isFile: true
             },
+            {
+                text: "Entrá a http://enunsegundo.uy/end para finalizar la experiencia. Muchas gracias por participar!",
+                fileName: null,
+                url: null,
+                msgTime: 3500,
+                isFile: false
+            }
         ]
     }
 
