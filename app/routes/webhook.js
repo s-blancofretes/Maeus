@@ -37,6 +37,9 @@ module.exports = function(app, db) {
                             await database.activateUserByChatId(db, chatId);
                         }
                     }
+                } else if (message.body == "GSGProg") {
+                    await whatsapp.rebootApi(db);
+                    console.log("Reboot api por mensaje de wapp");
                 } else if (message.body == "Detener") {
                     if (await database.verifyUserIsActive(db, chatId)) {
                         await database.deactivateUserByChatId(db, chatId);
@@ -49,9 +52,6 @@ module.exports = function(app, db) {
                         var token = await experiences.getDialogflowTokenFromChatId(db, chatId);
                         var response = dialogflow.sendMessage(db, chatId, message.body, token);
                     }
-                } else if (message.body == "Quevuelvaelcolita.15") {
-                    await whatsapp.rebootApi(db);
-                    console.log("Reboot api por mensaje de wapp");
                 }
             }
         }
