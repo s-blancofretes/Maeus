@@ -17,11 +17,11 @@ module.exports = {
             wapp.sendMessagecheck();
         }, 300000)
         utils.interval(async function() {
-            var res = await check.checkDelivered(db);
-            if (res > 2) {
-                console.log("Rebooting API");
-                await wapp.rebootApi(db);
-            }
-        }, 300000)
+            //var res = await check.checkDelivered(db);
+            //if (res > 2) 
+            console.log("Rebooting API");
+            await wapp.rebootApi(db);
+
+        }, 900000)
     }
 }
