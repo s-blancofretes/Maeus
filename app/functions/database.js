@@ -1,5 +1,5 @@
 var utils = require('../functions/utils');
-var collection = "userstest";
+var collection = "users";
 module.exports = {
     createNewUser: async function(db, { chatId, storyId }) {
         const user = {
