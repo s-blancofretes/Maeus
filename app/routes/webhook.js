@@ -24,7 +24,7 @@ module.exports = function(app, db) {
 
                     var currentStory = experiences.getStoryFromStartTime();
 
-                    if (currentStory !== null) { //no entiendo esta condicion inicial
+                    if (currentStory !== null) {
                         if (!await database.verifyUserIsInDb(db, chatId)) {
                             await whatsapp.sendMessage(db, chatId, "Gracias por participar de la experiencia. Es muy importante que agregues este celular 📱como contacto: " + EusPhone);
                             await whatsapp.sendMessage(db, chatId, "Empezá a vivir *En un segundo* 🕓");

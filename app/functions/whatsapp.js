@@ -6,6 +6,7 @@ var database = require('../functions/database');
 const url = 'https://eu10.chat-api.com/instance8578';
 var token = { token: 'eu8htn7gz3no08ed' };
 var utils = require('../functions/utils');
+var chatapi = require('../../config/chatapi');
 const TIMEOUT = 1000 * 60 * 2;
 
 module.exports = {
@@ -96,7 +97,7 @@ module.exports = {
     },
     rebootApi: async function(db) {
         await database.resetcountDeliveredMsgIfActiveUser(db);
-        email.sendEmailAlert("Se rebooteo la API");
+        //email.sendEmailAlert("Se rebooteo la API");
         const options = {
             url: url + '/reboot',
             method: 'GET',
@@ -120,5 +121,23 @@ module.exports = {
         setTimeout(async function() {
             request(options2, function(err, res, body) {});
         }, 60000)
+    },
+    status: function() {
+        const options = {
+            url: url + '/status',
+            method: 'GET',
+            qs: token,
+            json: true,
+            timeout: TIMEOUT
+        };
+        request(options, function(err, res, body) {
+            try {
+                console.log("response: " + res.body.accountStatus);
+                chatapi.setStatus(res.body.accountStatus);
+            }
+            catch(err) {
+                console.log("There was an error trying to retrieve ChatAPI status");
+            }
+        });
     }
 }
